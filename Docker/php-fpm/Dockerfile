@@ -23,7 +23,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN composer --version
 
 ADD start.sh /start.sh
-ADD symfony_environment.sh /etc/profile.d/symfony_environment.sh
 
 EXPOSE 9000
 

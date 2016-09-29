@@ -15,7 +15,6 @@ RUN mv composer.phar /usr/local/bin/composer
 
 ADD entrypoint.sh /entrypoint.sh
 ADD ./ /var/www
-ADD symfony_environment.sh /etc/profile.d/symfony_environment.sh
 
 WORKDIR /var/www
 

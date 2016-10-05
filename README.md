@@ -1,3 +1,5 @@
+For now, this is a work in progress. Not everything is set up to start a Symfony project right away. I'll consider it done when anyone will be able to clone the project and begin working with Symfony in the simplest way possible.
+
 ## A basic Docker architecture for Symfony projects, using docker-compose
 
 This is a simple Docker architecture that I made for Symfony projects.

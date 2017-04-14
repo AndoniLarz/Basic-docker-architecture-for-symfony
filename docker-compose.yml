@@ -11,17 +11,18 @@ services:
   nginx:
     build: ./Docker/nginx/
     ports:
-      - 8080:80
+      - 8080:80 # You can customize this if you want
     links:
       - fpm
     volumes_from:
       - symfony
     environment:
-      <APP_SERVER_NAME>: baskofon
+      <APP_SERVER_NAME>: yourAppName
     networks:
       default:
-        ipv4_address: 192.168.21.102
-
+        ipv4_address: 192.168.21.102 #You can change this if you want. Just make sure everyhting else in your code that depends on this is changed accordingly
+        # Also, it's the main ip address you can hit to access your app.
+        # If you happen to change it, make sure to change the networks subnet accordingly
   fpm:
     build: ./Docker/php-fpm/
     links:
@@ -29,7 +30,7 @@ services:
     volumes_from:
       - symfony
     environment:
-      APP_SERVER_NAME: baskofon
+      APP_SERVER_NAME: yourAppName
     networks:
       default:
         ipv4_address: 192.168.21.103
@@ -37,14 +38,14 @@ services:
   mysql:
     image: mysql
     ports:
-    - 3306:3306
+    - 3306:3306 # Customize this if you want
     volumes:
     - ./Docker/.data/db:/var/lib/mysql:rw
     environment:
-    - "MYSQL_ROOT_PASSWORD=root"
-    - "MYSQL_USER=root"
-    - "MYSQL_PASSWORD=root"
-    - "MYSQL_DATABASE=baskofon"
+    - "MYSQL_ROOT_PASSWORD=rootPW"
+    - "MYSQL_USER=user"
+    - "MYSQL_PASSWORD=password"
+    - "MYSQL_DATABASE=databaseName"
     networks:
       default:
         ipv4_address: 192.168.21.104
@@ -53,4 +54,4 @@ networks:
   default:
     ipam:
       config:
-      - subnet: 192.168.21.0/24
+      - subnet: 192.168.21.0/24 # This is the subnet you must change if you want to customize the ip addresses

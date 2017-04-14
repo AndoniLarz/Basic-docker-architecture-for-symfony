@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
     # I think we can remove these since it's the FPM container that handles the PHP commands. Need to test.
 
 # We can remove this too, need to test before.
-RUN curl -sS https://getcomposer.org/installer | php # If we remove php, it won't work.
+RUN curl -sS https://getcomposer.org/installer | php # If we remove php, it won't work
 RUN mv composer.phar /usr/local/bin/composer
 
 # I feel like this is only useful to clear the cache and set the correct rights on it
